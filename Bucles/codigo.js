@@ -75,11 +75,20 @@ for(let i in datos){
 //Interactuando con el usuario
 
 //Capturando elementos de formulario
-var texto1 = document.getElementById("valor");
-var btn1 = document.getElementById("boton");
-//Capturando eventos
+var DNI = document.getElementById("DNI");
+var Nombre = document.getElementById("Nombre");
+var Apellidos = document.getElementById("Apellidos");
+var Telefono = document.getElementById("Telefono");
+var btn1 = document.getElementById("boton1");
+var btn2 = document.getElementById("boton2");
+//Capturar evento del boton 1
 btn1.addEventListener("click", function(){
-    console.log(texto1.value);
+    var unProfe = {};
+    unProfe.dni = DNI.value;
+    unProfe.nombre = Nombre.value;
+    unProfe.apellidos = Apellidos.value;
+    unProfe.telefono = Telefono.value;
+    datos.push(unProfe);
 });
 
 /*
