@@ -79,6 +79,7 @@ var DNI = document.getElementById("DNI");
 var Nombre = document.getElementById("Nombre");
 var Apellidos = document.getElementById("Apellidos");
 var Telefono = document.getElementById("Telefono");
+var Asignaturas = document.getElementaryById("Asignaturas")
 var btn1 = document.getElementById("boton1");
 var btn2 = document.getElementById("boton2");
 //Capturar evento del boton 1
@@ -88,8 +89,17 @@ btn1.addEventListener("click", function(){
     unProfe.nombre = Nombre.value;
     unProfe.apellidos = Apellidos.value;
     unProfe.telefono = Telefono.value;
+    unProfe.asignaturas = Asignaturas.value
     datos.push(unProfe);
 });
+
+btn2.addEventListener("click", function(){
+    for(let i of datos){
+        console.log(`${i.dni} ${i.nombre} ${i.apellidos} ${i.telefono}`);
+        for(let j of i.asignaturas)
+            console.log(`   ${j.codigo} ${j.nombre}`);
+    }
+})
 
 /*
 Crear un formulario para dar de alta profesores introduciendo el DNI nombre apellidos y teléfono
@@ -97,7 +107,25 @@ del mismo
 
 Más abajo añadir otro formulario para añadir asignaturas a un profesor
 indicando código de la asignatura nombre de la asignatura y DNI del profesor que la imparte
+*/
 
+var DNI2 = document.getElementById("DNI2");
+var codA = document.getElementById("codA");
+var nombreA = document.getElementById("nombreA");
+var btn3 = document.getElementById("btn3");
+var btn4 = document.getElementById("btn4");
+btn3.addEventListener("click", function(){
+    for(let i of datos){
+        if(i.dni == DNI2.value){
+            var unaAsignatura;
+            unaAsignatura.codigo = codA.value;
+            unaAsignatura.nombre = nombreA.value;
+            i.asignaturas.push(unaAsignatura);
+        }
+    }
+})
+
+/*
 Añadir un tercer y último formulario donde introduciendo el código de la asignatura
 me indique el profesor que imparte esa asignatura
 
