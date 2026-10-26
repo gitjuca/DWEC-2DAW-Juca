@@ -1,10 +1,18 @@
+class ExcepcionesCarta extends Error {
+    constructor(message) {
+        super(message);
+    }
+}
+
 class Carta {
 
     constructor(numero, palo) {
         if (numero === undefined && palo === undefined) {
             this.numero = 1;
             this.palo = 'c';
-        } else {
+        }else if (numero < 1 || numero > 13 || !Number.isInteger(numero)) {
+            throw new ExcepcionesCarta("El número de la carta debe ser un número entero entre 1 y 13.");
+        }else {
             this.numero = numero;
             this.palo = palo;
         }
@@ -20,7 +28,7 @@ class Carta {
 
     setNumero(nuevoNumero) {
         if (nuevoNumero < 1 || nuevoNumero > 13 || !Number.isInteger(nuevoNumero)) {
-        console.log("El número de la carta debe ser un número entero entre 1 y 13.");
+            throw new ExcepcionesCarta("El número de la carta debe ser un número entero entre 1 y 13.");
         }
         this.numero = nuevoNumero;
     }
@@ -28,11 +36,14 @@ class Carta {
     setPalo(nuevoPalo) {
         const palosValidos = ['c', 'p', 'r', 't'];
         if (!palosValidos.includes(nuevoPalo)) {
-        console.log("El palo debe ser una de estas letras: 'c', 'p', 'r', 't'.");
+            throw new ExcepcionesCarta("El palo debe ser una de estas letras: 'c', 'p', 'r', 't'.");
         }
         this.palo = nuevoPalo;
     }
     static clonar(carta) {
+        if (!(carta instanceof Carta)) {
+            throw new ExcepcionesCarta("El objeto proporcionado no es una instancia de la clase Carta.");
+        }
         return new Carta(carta.getNumero(), carta.getPalo());
     }
 
@@ -58,7 +69,9 @@ class Carta {
     }
 
     comparar(otraCarta) {
-    
+        if (!(otraCarta instanceof Carta)) {
+            throw new ExcepcionesCarta("El objeto proporcionado no es una instancia de la clase Carta.");
+        }
 
         const ordenPalos = ['t', 'r', 'p', 'c']; 
         let resultado = 0;
@@ -91,7 +104,9 @@ class Carta {
         return resultado;
     }
     }
-    
+    try {
+    let c1 = new Carta('manzana', 'manzanas');
+    c1.mostrarCarta();
     const carta1 = new Carta(1, 'c');
     const carta2 = new Carta(13, 'p');
     const carta3 = new Carta(7, 'r');
@@ -120,3 +135,6 @@ class Carta {
 
     console.log("Empate total (Rey de picas vs Copia de Rey de picas):");
     carta2.comparar(cartaCopia); 
+    } catch (e) {
+        console.log(e.message);
+    }
