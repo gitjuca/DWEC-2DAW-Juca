@@ -1,0 +1,37 @@
+#numero {
+    font-size: 30px;
+    font-weight: bold;
+    color: #704e74;
+    min-width: 30px;
+    text-align: center;
+}
+
+#botonIncremento {
+    color: #704e74;
+    border: 2px solid #961b67;
+    padding: 14px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}     
+
+#botonDecremento {
+    color: #704e74;
+    border: 2px solid #961b67;
+    padding: 14px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#botonReinicio {
+    color: #704e74;
+    border: 2px solid #961b67;
+    padding: 10px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
