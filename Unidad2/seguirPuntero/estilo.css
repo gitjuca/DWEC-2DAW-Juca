@@ -1,0 +1,23 @@
+#circulo {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ee91cf;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+#panel {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 32px;
+}
+
+.coordenada {
+    font-weight: bold;
+    color: crimson;
+    margin: 10px 0;
+}
