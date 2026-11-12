@@ -160,18 +160,17 @@ class Baraja {
         }
 
 let miBaraja;
-const numCartasSpan = document.getElementById('num-cartas');
-const divCartasRobadas = document.getElementById('div-cartas-robadas');
+const numCartas = document.getElementById('numCartas');
+const cartasRobadas = document.getElementById('cartasRobadas');
 
 function actualizarContador() {
     if (miBaraja) {
-        numCartasSpan.textContent = miBaraja.numCartas();
+        numCartas.textContent = miBaraja.numCartas();
     }
 }
 
 document.getElementById('btnCrear').addEventListener('click', () => {
     miBaraja = new Baraja("francesa"); 
-    divCartasRobadas.innerHTML = '';
     actualizarContador();
 });
 
@@ -192,12 +191,12 @@ document.getElementById('btnRobar').addEventListener('click', () => {
     let cartaRobada = miBaraja.robar();
     actualizarContador();
 
-    let img = document.createElement('img');
-    let rutaImagen = 'img/' + cartaRobada.getPalo() + cartaRobada.getNumero() + '.jpg';
+    let img = document.createElement("img");
+    let rutaImagen = "img/" + cartaRobada.getPalo() + cartaRobada.getNumero() + ".jpg";
     
     img.src = rutaImagen;
-    img.className = 'carta-img';
-    divCartasRobadas.appendChild(img);
+    img.className = "cartaImg";
+    cartasRobadas.appendChild(img);
 });
 
 document.getElementById('btnCrear').click();
